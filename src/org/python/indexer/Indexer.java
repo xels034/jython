@@ -389,7 +389,7 @@ public class Indexer {
     }
 
     public void removeBinding(NBinding b) {
-        allBindings.remove(b);
+        allBindings.remove(b.getQname());
     }
 
     public NBinding putBinding(NBinding b) {

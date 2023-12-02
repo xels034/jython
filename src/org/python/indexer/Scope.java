@@ -277,7 +277,7 @@ public class Scope {
         ensureTable();
         table.put(id, b);
     }
-
+    @SuppressWarnings("unlikely-arg-type") //unclear whether this hides a genuine bug
     private void updateType(NBinding b, NNode loc, NType type, NBinding.Kind kind) {
         NType curType = b.followType();
         if (!isNewType(curType, type)) {

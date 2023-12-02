@@ -1492,6 +1492,7 @@ public class gc {
         }
     }
 
+    @SuppressWarnings("unlikely-arg-type")
     public static boolean isMonitored(PyObject ob) {
         synchronized (monitoredObjects) {
             WeakrefGCCompareDummy.defaultInstance.setCompare(ob);
@@ -1501,6 +1502,7 @@ public class gc {
         }
     }
 
+    @SuppressWarnings("unlikely-arg-type")
     public static boolean unmonitorObject(PyObject ob) {
             synchronized(monitoredObjects) {
                 WeakrefGCCompareDummy.defaultInstance.setCompare(ob);

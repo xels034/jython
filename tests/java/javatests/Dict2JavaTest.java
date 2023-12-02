@@ -92,6 +92,7 @@ public class Dict2JavaTest {
 
     // make sure nulls are handled and other object types, nulls
     // should never match anything in the entry set.
+    @SuppressWarnings("all")
     public boolean test_entry_set_nulls() {
         Set<Map.Entry<Object, Object>> set = map.entrySet();
         return set.contains(null) == false  && set.remove(null) == false &&
