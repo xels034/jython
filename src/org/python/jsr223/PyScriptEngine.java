@@ -265,4 +265,20 @@ public class PyScriptEngine extends AbstractScriptEngine implements Compilable, 
     public void setModuleFilter(Function<String, Boolean> filter){
       interp.getSystemState().setModuleFilter(filter);
     }
+
+    public void setIn(java.io.InputStream inStream){
+      interp.setIn(inStream);
+    }
+
+    public void setOut(java.io.OutputStream outStream){
+      interp.setOut(outStream);
+    }
+
+    public void setErr(java.io.OutputStream outStream){
+      interp.setErr(outStream);
+    }
+
+    public PythonInterpreter getInterpreter(){
+      return interp;
+    }
 }
