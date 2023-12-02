@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.function.Function;
 
 import org.python.antlr.base.mod;
 import org.python.core.stringlib.IntegerFormatter;
@@ -1207,12 +1208,20 @@ public class __builtin__ {
 
     public static PyObject __import__(String name, PyObject globals, PyObject locals,
                                       PyObject fromlist, int level) {
+
+        PySystemState sysState = Py.getSystemState();
+        Function<String, Boolean> filter = sysState.getModuleFilter();
+
+        if(!filter.apply(name)){
+          throw Py.ImportError("Import of module with name \"" + name + "\" is not allowed by the module filter defined in jython");
+        }
+
         PyFrame frame = Py.getFrame();
         PyObject builtins;
         if (frame != null && frame.f_builtins != null) {
             builtins = frame.f_builtins;
         } else {
-            builtins = Py.getSystemState().builtins;
+            builtins = sysState.builtins;
         }
 
         PyObject __import__ = builtins.__finditem__("__import__");

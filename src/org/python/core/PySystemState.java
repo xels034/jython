@@ -38,6 +38,7 @@ import java.util.StringTokenizer;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Function;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
@@ -67,7 +68,7 @@ import jnr.posix.util.Platform;
 // but it will require some refactoring to see this wish come true.
 public class PySystemState extends PyObject
         implements AutoCloseable, ClassDictInit, Closeable, Traverseproc {
-
+    
     private static final Logger logger = Logger.getLogger("org.python.core");
 
     private static final String CACHEDIR_DEFAULT_NAME = ".jython_cache";
@@ -211,7 +212,15 @@ public class PySystemState extends PyObject
     // long_info
     public static final PyObject long_info = LongInfo.getInfo();
 
+    private static final Function<String,Boolean> DEFAULT_FILTER = new Function<String,Boolean>(){
+      @Override
+      public Boolean apply(String s) {return true;}
+    };
+    private Function<String, Boolean> moduleFilter;
+
     public PySystemState() {
+        setModuleFilter(null);
+
         initialize();
         closer = new PySystemStateCloser(this);
         modules = new PyStringMap();
@@ -259,6 +268,15 @@ public class PySystemState extends PyObject
         __dict__.__setitem__("excepthook", __excepthook__);
 
         logger.config("sys module instance created");
+    }
+
+    public void setModuleFilter(Function<String, Boolean> filter){
+      moduleFilter = filter;
+      if(moduleFilter == null) moduleFilter = DEFAULT_FILTER;
+    }
+
+    public Function<String, Boolean> getModuleFilter(){
+      return moduleFilter;
     }
 
     public static void classDictInit(PyObject dict) {
@@ -1667,6 +1685,7 @@ public class PySystemState extends PyObject
 
     public void cleanup() {
         closer.cleanup();
+        moduleFilter = null;
     }
 
     @Override

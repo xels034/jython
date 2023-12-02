@@ -21,6 +21,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 
 import org.python.antlr.base.mod;
@@ -34,6 +35,8 @@ import jnr.constants.platform.Errno;
 import jnr.posix.util.Platform;
 
 public final class Py extends PrePy {
+
+  public static Set<String> moduleWhitelist;
 
     static class SingletonResolver implements Serializable {
 

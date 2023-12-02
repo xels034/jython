@@ -5,6 +5,9 @@ import org.python.core.*;
 import java.io.Reader;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import java.util.Set;
+import java.util.function.Function;
+
 import javax.script.AbstractScriptEngine;
 import javax.script.Bindings;
 import javax.script.Compilable;
@@ -253,5 +256,13 @@ public class PyScriptEngine extends AbstractScriptEngine implements Compilable, 
 
     public void close() {
         interp.close();
+    }
+
+    /**
+     * Defines a callback to query whether a module can be loaded. By default the filter is null, i.e. all module loads are allowed.
+     * @param filter The function being called before importing a module to query whether the action is allowed
+     */
+    public void setModuleFilter(Function<String, Boolean> filter){
+      interp.getSystemState().setModuleFilter(filter);
     }
 }

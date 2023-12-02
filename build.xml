@@ -198,7 +198,7 @@ informix.jar = ../support/jdbc-4.10.12.jar
 
         <!-- Target: jar-standalone. jython.standalone.jar subsumes jython.deploy.jar, and
              adds the Python library as a resource. A self-contained Python in a JAR. -->
-        <property name="jython.standalone.jar" value="jython-standalone.jar" />
+        <property name="jython.standalone.jar" value="jython-standalone-2.7.2_ce.jar" />
 
         <!-- Target: all-jars creates these and all the above JARs.  -->
         <property name="jython.javadoc.jar" value="javadoc.jar" />
@@ -366,7 +366,7 @@ informix.jar = ../support/jdbc-4.10.12.jar
         <echo>snapshot.suffix           = '${snapshot.suffix}'</echo>
         <echo>jython.dev.jar            = '${jython.dev.jar}'</echo>
         <echo>jython.deploy.jar         = '${jython.deploy.jar}'</echo>
-        <echo>jython.standalone.jar     = '${jython.standalone.jar}'</echo>
+        <echo>jython.standalone-2.7.2_ce.jar= '${jython.standalone.jar}'</echo>
         <echo>jython.javadoc.jar        = '${jython.javadoc.jar}'</echo>
         <echo>jython.sources.jar        = '${jython.sources.jar}'</echo>
         <echo>jar.update                = '${jar.update}'</echo>
