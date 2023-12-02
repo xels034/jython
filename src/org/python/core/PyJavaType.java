@@ -312,6 +312,17 @@ public class PyJavaType extends PyType {
                                  */
                                 continue;
                             }
+                        }else if (method.equals("__copy__")){
+                          if(Generic.set(Cloneable.class, Set.class).containsAll(proxySet)){
+                            /*
+                             * DLI 2020.11.11: Bug with Set and Cloneable. They are not subclasses of each other,
+                             * but implement 2 different __copy__ methods (one from JavaProxySet, which adds a pure python copy "default" method,
+                             * and the other one from clonable, when the class overrides the clone() method)
+                             * 
+                             * Ignore this in such a case
+                             */
+                            continue;
+                          }
                         }
 
                         String fmt = "Supertypes that share a modified attribute "

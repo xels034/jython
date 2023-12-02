@@ -201,8 +201,8 @@ informix.jar = ../support/jdbc-4.10.12.jar
         <property name="jython.standalone.jar" value="jython-standalone-2.7.2_ce.jar" />
 
         <!-- Target: all-jars creates these and all the above JARs.  -->
-        <property name="jython.javadoc.jar" value="javadoc.jar" />
-        <property name="jython.sources.jar" value="sources.jar" />
+        <property name="jython.javadoc.jar" value="jython-javadoc.jar" />
+        <property name="jython.sources.jar" value="jython-sources.jar" />
     </target>
 
     <target name="common-paths" depends="common-dirs">
