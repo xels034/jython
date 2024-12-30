@@ -9,7 +9,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.security.AccessControlException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -227,11 +226,7 @@ public class PrePy {
      * @return {@code System} properties or a new {@code Properties} object
      */
     public static Properties getSystemProperties() {
-        try {
-            return System.getProperties();
-        } catch (AccessControlException ace) {
-            return new Properties();
-        }
+        return System.getProperties();
     }
 
     /**
@@ -243,12 +238,8 @@ public class PrePy {
      * @return property value or given default
      */
     public static String getSystemProperty(String key, String defaultValue) {
-        try {
-            String value = System.getProperty(key, null);
-            return value != null ? value : defaultValue;
-        } catch (AccessControlException ace) {
-            return defaultValue;
-        }
+        String value = System.getProperty(key, null);
+        return value != null ? value : defaultValue;
     }
 
     /**

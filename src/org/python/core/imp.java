@@ -485,10 +485,6 @@ public class imp {
         }
         FileOutputStream fop = null;
         try {
-            SecurityManager man = System.getSecurityManager();
-            if (man != null) {
-                man.checkWrite(compiledFilename);
-            }
             fop = new FileOutputStream(FileUtil.makePrivateRW(compiledFilename));
             fop.write(compiledSource);
             fop.close();
