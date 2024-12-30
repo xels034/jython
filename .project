@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
 	<name>jython</name>
 	<comment>Project jython created by Buildship.</comment>
-=======
-	<name>jython_ce</name>
-	<comment>Project jython_ce created by Buildship.</comment>
->>>>>>> d381e129d340e309c2001fd84d45c05ab8e78d10
 	<projects>
 	</projects>
 	<buildSpec>

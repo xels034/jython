@@ -57,11 +57,7 @@
   <classpathentry kind="lib" path="extlibs/icu4j-71.1.jar"/>
   <classpathentry kind="lib" path="extlibs/jarjar-1.7.2.jar"/>
   <classpathentry kind="lib" path="extlibs/java-sizeof-0.0.5.jar"/>
-<<<<<<< HEAD
   <!--<classpathentry kind="lib" path="extlibs/javax.servlet-api-4.0.1.jar"/>-->
-=======
-  <classpathentry kind="lib" path="extlibs/javax.servlet-api-4.0.1.jar"/>
->>>>>>> d381e129d340e309c2001fd84d45c05ab8e78d10
   <classpathentry kind="lib" path="extlibs/jffi-1.3.9.jar"/>
   <classpathentry kind="lib" path="extlibs/jffi-aarch64-Linux.jar"/>
   <classpathentry kind="lib" path="extlibs/jffi-arm-Linux.jar"/>
